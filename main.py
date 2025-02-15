@@ -27,6 +27,13 @@ def report(count): #return the count of each symbol in a formatted string
     report += "77986 words found in the document\n"
     report += "The count of each symbol is as follows:\n"
     report += "\n"
+    symbols = []
+    for symbol in count:
+        if symbol.isalpha():
+            symbols.append({"s":symbol, "c":count[symbol]})
+    symbols = sorted(symbols, key=lambda x: x['c'], reverse=True)
+    for symbol in symbols:
+        report += f"'{symbol['s']}': {symbol['c']}\n"
     return report
 
 main()
