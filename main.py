@@ -29,11 +29,15 @@ def report(count): #return the count of each symbol in a formatted string
     report += "\n"
     symbols = []
     for symbol in count:
-        if symbol.isalpha():
-            symbols.append({"s":symbol, "c":count[symbol]})
-    symbols = sorted(symbols, key=lambda x: x['c'], reverse=True)
-    for symbol in symbols:
-        report += f"'{symbol['s']}': {symbol['c']}\n"
+        if symbol.isalpha(): #abc characters only
+            symbols.append({"s":symbol, "c":count[symbol]})#List of dictionaries with symbol and count as keys
+    #symbols = sorted(symbols, key=lambda x: x['c'], reverse=True) #this sorts the lists in descending order
+    symbols.sort(reverse=True, key=sort_on) #sort the list of dictionaries in descending order
+    for s in symbols:
+        report += f"'{s['s']}': {s['c']}\n"
     return report
+
+def sort_on(d): #helper function to sort the list of dictionaries
+    return d["c"]
 
 main()
