@@ -1,7 +1,18 @@
-def main():
+def main(): #execute functions to locate and open the text and count its words
+    path = get_path()
+    book = read_book(path)
+    words = count(book)
+    print(words)
 
-    with open("books/frankenstein.txt") as f:
-        file_contents = f.read()
-        print(file_contents)
+def get_path(): #return the file location
+    return "books/frankenstein.txt"
+
+def read_book(loc): #read the file and return its content as a string
+    with open(loc) as f:
+        return f.read()
+
+def count(b): #seperates the string through spaces and returns the length of the resulting list
+    string = b.split()
+    return len(string)
 
 main()
