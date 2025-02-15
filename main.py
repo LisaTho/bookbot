@@ -13,6 +13,8 @@ def read_book(loc): #read the file and return its content as a string
 
 def count(b): #seperates the string through spaces and returns the length of the resulting list
     string = b.split()
+    # s = [string[i] for i in range(10)]
+    # print(s)
     return len(string)
 
 main()
